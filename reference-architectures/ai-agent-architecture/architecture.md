@@ -35,4 +35,68 @@ The architecture focuses on:
 - Optional use of **LangChain** or similar frameworks for chaining tasks.
 
 ### 4. **Knowledge Base**
-- Stores
+- Stores enterprise data, documentation, or domain-specific information.
+- Used by AI agents for **retrieval-augmented generation (RAG)**.
+- Examples: Amazon S3, vector databases (Pinecone, FAISS), or relational DBs.
+
+### 5. **Execution Layer**
+- Performs actions on behalf of agents:
+  - Triggering workflows
+  - Calling APIs
+  - Creating tickets
+- Ensures **auditability** and **security**.
+
+### 6. **Monitoring & Logging**
+- Track AI agent activity and performance.
+- Centralized logging for observability and compliance.
+- Examples: Amazon CloudWatch, ELK stack, or Prometheus + Grafana.
+
+---
+
+## Architecture Flow
+
+1. User submits a request via UI or API.
+2. **Agent Orchestrator** selects appropriate agent(s).
+3. AI agent queries the **knowledge base**.
+4. Agent processes the request using **LLM via Amazon Bedrock**.
+5. Output is returned to user or triggers execution in enterprise systems.
+6. Logs and metrics captured for monitoring.
+
+---
+
+## Deployment Considerations
+
+- **Scalability:** Deploy agents as serverless functions or containerized microservices.
+- **Security:** Ensure access control for knowledge bases and enterprise systems.
+- **Extensibility:** Add new agents for additional domains or workflows.
+- **Integration:** Agents should integrate with existing enterprise architecture and tools (e.g., ticketing, databases, CRM).
+
+---
+
+## Sample Technology Stack
+
+| Component              | Technology Example                      |
+|------------------------|----------------------------------------|
+| UI / API               | React, Flask, AWS API Gateway          |
+| Orchestrator           | AWS Step Functions, Celery, Lambda     |
+| AI Agents              | Amazon Bedrock, LangChain              |
+| Knowledge Base         | Amazon S3, DynamoDB, Vector DB         |
+| Execution Layer        | AWS Lambda, Step Functions, APIs       |
+| Monitoring / Logging   | CloudWatch, ELK, Prometheus + Grafana |
+
+---
+
+## Benefits
+
+- Supports **autonomous AI workflows** at enterprise scale.
+- Provides **modular, reusable architecture patterns**.
+- Facilitates **safe, monitored AI operations**.
+- Aligns with cloud-native principles and modern enterprise architecture.
+
+---
+
+## References
+
+- [AWS Bedrock Documentation](https://aws.amazon.com/bedrock/)
+- [LangChain](https://www.langchain.com/)
+- [Agentic AI Concepts](https://www.deepmind.com/publications/agentic-ai)
