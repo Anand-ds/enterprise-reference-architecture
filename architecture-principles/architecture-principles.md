@@ -1,0 +1,1 @@
+Explain TOGAF aligned principles
